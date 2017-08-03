@@ -2,7 +2,7 @@
   "name": "Spoiler Alert",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Get possible spoilers alerts",
+  "description": "Prevent tv show possible spoilers adding alert messages in every website",
   "homepage_url": "https://ianaya.com/spoiler-alert",
   "options_ui": {
       "chrome_style": true,
