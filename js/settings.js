@@ -3,16 +3,18 @@
 const chbAutorun = document.getElementById('chbAutorun')
 const txtKeywords = document.getElementById('txtKeywords')
 const btnSave = document.getElementById('btnSave')
-const btnCancel = document.getElementById('btnClose')
+const btnCancel = document.getElementById('btnCancel')
 
 const storage = chrome.storage.local
 
 let isAutorun = window.localStorage['autorun']
+let keywords = window.localStorage['keywords']
 
 if (isAutorun === undefined || isAutorun === '') {
   isAutorun = true
 }
 chbAutorun.checked = isAutorun
+txtKeywords.value = keywords
 
 btnSave.addEventListener('click', () => {
   window.localStorage['autorun'] = chbAutorun.checked
