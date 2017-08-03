@@ -2,6 +2,6 @@ html{font-size:12px}*{box-sizing:border-box;text-rendering:geometricPrecision}bo
 
 
 main {
-    min-height: 200px;
+    min-height: 100px;
     min-width: 300px;
 }
