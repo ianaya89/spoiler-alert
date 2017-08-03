@@ -1,38 +1,57 @@
-function gatear (visitedNodes) {
+/* globals chrome NodeFilter */
+
+function preventSpoilers (keywords, visitedNodes) {
+  if (!keywords) {
+    window.alert('You need to set your tv shows before run spoiler alert')
+    return
+  }
+
   let node
   const nodes = document.createNodeIterator(document.getElementsByTagName('body')[0], NodeFilter.SHOW_TEXT)
   const nodesArray = []
 
-  while (node = nodes.nextNode()) {
+  while (node = nodes.nextNode()) { // eslint-disable-line
     if (visitedNodes && visitedNodes.includes(node)) { continue }
 
     nodesArray.push(node)
 
     if (node.parentElement &&
-            (node.parentElement.tagName === 'STYLE' ||
-                node.parentElement.tagName === 'SCRIPT' ||
-                node.parentElement.tagName === 'NOSCRIPT')
+        (node.parentElement.tagName === 'STYLE' ||
+            node.parentElement.tagName === 'SCRIPT' ||
+            node.parentElement.tagName === 'NOSCRIPT')
     ) { continue }
 
     if (!node.nodeValue) { continue }
 
-    if (node.nodeValue.match(/game ?of ?thrones/i) ||
-            node.nodeValue.match(/got/i)
-    ) { node.nodeValue = `⚠️ 👀 🚨 😱  [SPOILER ALERT] ⚠️ 👀 🚨 😱  ${node.nodeValue}` }
+    const regex = new RegExp(keywords, 'i')
+    if (node.nodeValue.match(regex)) {
+      node.nodeValue = `⚠️ 👀 🚨 😱 [SPOILER ALERT] ⚠️ 👀 🚨 😱  ${node.nodeValue}`
+    }
   }
 
   return nodesArray
 }
 
-chrome.storage.local.get('automatic', function (result) {
-  if (result.automatic || typeof result.automatic === 'undefined') {
-    let visitedNodes = gatear()
+function init () {
+  chrome.storage.local.get('keywords', (result) => {
+    console.log(result)
+    if (!result.keywords) {
+      window.alert('You need to set your tv shows before run spoiler alert')
+      return
+    }
+
+    const keywords = result.keywords.replace(/,/g, '|').replace(/ /g, ' ?')
+    let visitedNodes = preventSpoilers(keywords)
 
     window.onscroll = function (ev) {
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        const newNodes = gatear(visitedNodes)
+      if (document.body.scrollHeight === document.body.scrollTop + window.innerHeight) {
+        const newNodes = preventSpoilers(keywords, visitedNodes)
         visitedNodes = [...visitedNodes, ...newNodes]
       }
     }
-  }
+  })
+}
+
+chrome.storage.local.get('autorun', (result) => {
+  if (result.autorun) { init() }
 })
