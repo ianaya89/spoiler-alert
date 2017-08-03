@@ -1,5 +1,5 @@
 # spoiler-alert
 
-> ⚠️ 👀 🚨 😱 Chrome App to prevent tv show possible spoilers adding alert messages in every website
+> ⚠️ 👀 🚨 😱 Chrome App to alert about possible tv shows spoilers
 
 ![demo](./demo.gif)

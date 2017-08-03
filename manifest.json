@@ -2,7 +2,7 @@
   "name": "Spoiler Alert",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Prevent tv show possible spoilers adding alert messages in every website",
+  "description": "Chrome App to alert about possible tv shows spoilers",
   "homepage_url": "https://ianaya.com/spoiler-alert",
   "options_ui": {
       "page": "settings.html"

@@ -1,7 +1,7 @@
 {
   "name": "spoiler-alert",
   "version": "0.0.1",
-  "description": "Prevent tv show possible spoilers adding alert messages in every website",
+  "description": "Chrome App to alert about possible tv shows spoilers",
   "main": "index.js",
   "scripts": {
     "lint": "eslint --ext .js",
