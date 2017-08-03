@@ -1,0 +1,14 @@
+{
+  "name": "spoiler-alert",
+  "version": "1.0.0",
+  "description": "Extensión para Google Chrome o Mozilla Firefox que cambia “Mauricio Macri” por “Macri Gato” cada vez que aparece.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.3.0"
+  }
+}
