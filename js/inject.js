@@ -34,7 +34,6 @@ function preventSpoilers (keywords, visitedNodes) {
 
 function init () {
   chrome.storage.local.get('keywords', (result) => {
-    console.log(result)
     if (!result.keywords) {
       window.alert('You need to set your tv shows before run spoiler alert (press settings button).')
       return
