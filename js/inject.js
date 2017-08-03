@@ -43,7 +43,7 @@ function init () {
     let visitedNodes = preventSpoilers(keywords)
 
     window.onscroll = function (ev) {
-      if (document.body.scrollHeight === document.body.scrollTop + window.innerHeight) {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         const newNodes = preventSpoilers(keywords, visitedNodes)
         visitedNodes = [...visitedNodes, ...newNodes]
       }
