@@ -7,12 +7,9 @@ const btnCancel = document.getElementById('btnCancel')
 
 const storage = chrome.storage.local
 
-let isAutorun = window.localStorage['autorun']
+let isAutorun = window.localStorage['autorun'] === 'true'
 let keywords = window.localStorage['keywords']
 
-if (isAutorun === undefined || isAutorun === '') {
-  isAutorun = true
-}
 chbAutorun.checked = isAutorun
 txtKeywords.value = keywords
 
