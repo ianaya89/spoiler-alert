@@ -1,30 +1,29 @@
-const autorun = document.getElementById('chbAutorun');
-const keywords = document.getElementById('txtKeywords');
-const btnSave = document.getElementById('btnSave');
-const btnClose = document.getElementById('btnClose');
+/* globals chrome */
 
-const storage = chrome.storage.local;
+const chbAutorun = document.getElementById('chbAutorun')
+const txtKeywords = document.getElementById('txtKeywords')
+const btnSave = document.getElementById('btnSave')
+const btnCancel = document.getElementById('btnClose')
 
-let isAutorun = localStorage['autorun'];
+const storage = chrome.storage.local
+
+let isAutorun = window.localStorage['autorun']
 
 if (isAutorun === undefined || isAutorun === '') {
-    isAutorun = true
+  isAutorun = true
 }
-
-automatic.checked = isAutorun;
-
-// function eraseOptions() {
-// 	localStorage.clear();
-// 	location.reload();
-// }
+chbAutorun.checked = isAutorun
 
 btnSave.addEventListener('click', () => {
-    localStorage['autorun'] = autorun.checked;
-    storage.set({ 'autorun': autorun.checked });
+  window.localStorage['autorun'] = chbAutorun.checked
+  storage.set({ 'autorun': chbAutorun.checked })
 
-    window.close()
+  window.localStorage['keywords'] = txtKeywords.value
+  storage.set({ 'keywords': txtKeywords.value })
+
+  window.close()
 })
 
 btnCancel.addEventListener('click', () => {
-    window.close()
+  window.close()
 })
