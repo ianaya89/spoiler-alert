@@ -2,3 +2,4 @@
 
 > ⚠️ 👀 🚨 😱 Chrome App to prevent tv show possible spoilers adding alert messages in every website
 
+![demo](./demo.gif)
